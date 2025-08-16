@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+	function check(val) {
+		if (val < 10) {
+			return ("0" + val);
+		} 
+		else {
+			return (val);
+		}
+	}
+		function time(){
+		var monthname = ['1', '2',  '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+		var date = new Date();//获取当前的时间
+		console.log(date)//console控制台输出，主要用来测试
+		//接下来的都是用分贝获取年月日星期小时分秒
+		var year = date.getFullYear()
+		console.log(year)
+		var month= monthname[date.getMonth()]
+		console.log(month)
+		var day = date.getDate()
+		console.log(date)
+		var week = date.getDay()
+		var hours = date.getHours()	
+		console.log(hours)
+		var min = date.getMinutes()
+		console.log(min)
+		var sec = date.getSeconds()
+		// 因为var week = date.getDay()得到的是数字0~1 所以用switch语句来赋值
+		switch(week){
+			case 0:
+				week='周日'
+				break;
+			case 1:
+				week='周一'
+				break;
+			case 2:
+				week='周二'
+				break;
+			case 3:
+				
+				week='周三'
+				break;
+			case 4:
+				week='周四'
+				break;
+			case 5:
+				week='周五'
+				break;
+			case 6:
+				week='周六'
+				break;
+		}
+		// 把年月日星期小时分秒赋值给body页面
+
+		document.getElementById("time1").innerHTML = hours+':'+check(min);
+        document.getElementById("time2").innerHTML = hours+':'+check(min);
+	    document.getElementById("date1").innerHTML = year+'.'+month+'.'+check(day);
+        document.getElementById("date2").innerHTML = year+'.'+month+'.'+check(day);
+ 
+	   
+	}
+	//把以上的都封装到一个函数中，方便调用
+  	setInterval(time,1000)//定时器，调用time 当1000毫秒
+</script>
+<head>
+    <meta charset="utf-8">
+  <style>
+	  @font-face{
+		  font-family:"font";
+		  src: url(https://cn-nb1.rains3.com/cyan2design/cyan2font/ResourceHanRoundedCN-Heavy.ttf);
+	  }
+  	  body{
+		  font-family:"font";
+		  display:flex;
+		  justify-content: center;
+	  }
+	  #background{
+        width:200px;
+        height:140px;
+        background:url(https://cn-nb1.rains3.com/cyan2design/cyan2customize/2025/0227/picture/clock.png) no-repeat;
+        background-size:100% 100%;
+        z-index:-3;
+      }
+      .time{
+        position:relative;
+        top:20px;
+      }
+	  #date1{
+        text-align: center;
+		  position: absolute;
+		  font-size: 20px;
+		  top:50px;
+		  left:45%;
+		  z-index:3;
+		  transform:translateX(-50%);
+          z-index:0;
+		  color:white;
+		  background:black;
+		  padding:0 10px;
+		  border-radius:20px;
+
+	  }
+      #date2{
+          display:none;
+        
+	  }
+	  #time1{
+          font-size: 60px;
+          position: absolute;
+		  text-align: center;
+		  width:fit-content;
+		  padding:0 20px;
+		  top:-10px;
+		  left:50%;
+		  z-index:4;
+		  transform:translateX(-50%);
+		  color:white;
+		  margin-left:-10px;
+		  text-shadow:0 0 10px black;
+          transform:translatex(-50%);
+	  }
+      #time2{
+        display:none;
+	}
+
+  </style>
+</head>
+<body>
+<background id="background">
+    <div class="time">
+<p id="date1"></p>
+<p id="date2"></p>
+<div id="time1"></div>
+<div id="time2"></div></div>
+</background>
+</body>
+
+
+	
+				   
+	
